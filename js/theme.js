@@ -28,14 +28,9 @@ function createStyles() {
 	styles.setAttribute('class', 'mirkwood-reader');
 	styles.innerHTML = `
 		/* Mirkwood Reader Styles */
-		@media screen and (max-width: 650px) {
-			:root {
-				font-size: 14px;
-			}
-		}
 		:root {
-			transition: color .2s ease-in-out;
-			transition: background-color .2s ease-in-out;
+			transition: color .5s ease-in-out !important;
+			transition: background-color .5s ease-in-out !important;
 		}
 		:not(pre.prettyprint) {
 		    scrollbar-color: hsla(0, 0%, 2.5%, 1.0);
@@ -67,7 +62,7 @@ function createStyles() {
 		pre {
 		    font-family: 'Ubuntu Mono', monospace;
 		    padding: 1rem !important;
-		    font-size: 1.05rem;
+		    font-size: 1rem;
 		    overflow-x: auto;
 		}
 		pre:not(pre.prettyprint) {
@@ -126,6 +121,9 @@ function createStyles() {
 		a:visited {
 		    color: #A37914 !important;
 		}
+		a:hover {
+		    color: #E2B13C !important;
+		}
 		table {
 			width: 100%;
 			overflow-x: scroll;
@@ -152,14 +150,21 @@ function createStyles() {
 		hr {
 			display: none;
 		}
+		.content {
+			width: 100% !important;
+		}
 		div.clearfix {
+			width: 100%;
 			display: flex;
 			flex-flow: row nowrap;
 			justify-content: flex-start;
 		}
+		div.clearfix::after {
+			content: none !important;
+		}
 		div.column.menu {
 			padding: 0 1rem 0 0 !important;
-			width: fit-content;
+			width: fit-content !important;
 		}
 		div.column.menu b {
 			display: block;
@@ -177,7 +182,6 @@ function createStyles() {
 			margin-bottom: 5px;
 			font-size: .85rem;
 			font-weight: 500;
-			word-break: none;
 			white-space: nowrap;
 		}
 		div.column.menu li a {
@@ -222,7 +226,62 @@ function createStyles() {
 			font-size: .85rem;
 			color: #FEF3C9;
 			margin-top: 1.5rem;
-			background-color: hsla(0, 0%, 5%, 1.0);
+			background-color: hsla(0, 0%, 4%, 1.0);
+		}
+		@media (max-width: 400px) {
+			:root {
+				font-size: 12px !important;
+			}
+		}
+		@media (max-width: 500px) {
+			div.clearfix {
+				flex-flow: column nowrap;
+			}
+			div.column.menu {
+				display: flex;
+				flex-flow: column nowrap;
+				justify-content: flex-start;
+				width: 100% !important;
+				margin-bottom: 2rem !important;
+				padding-right: 0 !important;
+			}
+			div.column.menu li {
+				font-size: 1rem !important;
+			}
+		}
+		@media (max-width: 650px) {
+			:root {
+				font-size: 14px !important;
+			}
+		}
+		@media (min-width: 651px) {
+			:root {
+				font-size: 16px !important;
+			}
+		}
+		@media (min-width: 900px) {
+			body {
+				background-origin: content-box;
+				background-color: hsla(0, 0%, 7.5%, 1.0);
+				background: linear-gradient(90deg, 
+								hsla(0, 0%, 6%, 1.0) 0%, 
+								hsla(0, 0%, 5%, 1.0) calc(calc(100% - calc(900px + 10vw) - 4rem) / 2), 
+								hsla(0, 0%, 7.5%, 1.0) calc(calc(100% - calc(900px + 10vw) - 4rem) / 2), 
+								hsla(0, 0%, 7.5%, 1.0) calc(100% - calc(calc(100% - calc(900px + 10vw) - 4rem) / 2)), 
+								hsla(0, 0%, 5%, 1.0) calc(100% - calc(calc(100% - calc(900px + 10vw) - 4rem) / 2)), 
+								hsla(0, 0%, 6%, 1.0))!important;
+			}
+			div.clearfix {
+				max-width: calc(900px + 10vw);
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+			div.column.menu {
+				padding-right: calc(1rem + 2vw) !important;
+			}
+			div.column.menu li {
+				padding: 10px 1vw;
+			}
 		}
 		`;
 	return styles;
