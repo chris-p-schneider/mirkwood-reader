@@ -28,9 +28,9 @@ function createStyles() {
 	styles.setAttribute('class', 'mirkwood-reader');
 	styles.innerHTML = `
 		/* Mirkwood Reader Styles */
-		:root {
-			transition: color .5s ease-in-out !important;
-			transition: background-color .5s ease-in-out !important;
+		:root *:not(html, body) {
+			transition: color .2s ease-in-out !important;
+			transition: background-color .2s ease-in-out !important;
 		}
 		:not(pre.prettyprint) {
 		    scrollbar-color: hsla(0, 0%, 2.5%, 1.0);
@@ -51,8 +51,8 @@ function createStyles() {
 		    font-family: 'Inter', sans-serif;
 		}
 		body {
-		    padding: 1rem 1rem 3rem 1rem;
-		    background-image: none;
+		    padding: 1rem 1rem 2rem 1rem;
+		    background-image: none !important;
 		    margin: 0;
 		}
 		div {
@@ -102,7 +102,7 @@ function createStyles() {
 		}
 		blockquote {
 			padding: 1rem;
-			margin: 0 0 1rem 0;
+			margin: 1rem 0;
 			font-size: .9rem;
 			font-weight: 300;
 			background-color: hsla(0, 0%, 10%, 1);
@@ -125,7 +125,8 @@ function createStyles() {
 		    color: #E2B13C !important;
 		}
 		table {
-			display: block;
+			display: inline-table;
+			width: 100%;
 			max-width: 100%;
 			overflow-x: auto;
 			font-size: .85rem;
@@ -136,7 +137,11 @@ function createStyles() {
 		th, td {
 			padding: 5px;
 		}
+		th {
+			background-color: hsla(0, 0%, 5%, 1.0);
+		}
 		td {
+			text-align: center;
 			word-break: break-word !important;
 		}
 		tr:hover {
@@ -150,6 +155,10 @@ function createStyles() {
 			display: block;
 			width: calc(100% - 2rem);
 			margin: .5rem auto;
+			max-height: 50vh;
+			object-fit: contain;
+			background-color: hsla(0, 0%, 5%, 1.0);
+			filter: brightness(0.8);
 		}
 		hr {
 			display: none;
@@ -216,7 +225,7 @@ function createStyles() {
 			background-color: hsla(0, 0%, 15%, 1.0);
 		}
 		div.column.content {
-			padding-bottom: 1rem !important;
+			padding-bottom: 3.5rem !important;
 		}
 		div.column.content::after {
 			content: none !important; 
@@ -226,6 +235,7 @@ function createStyles() {
 			left: 0;
 			bottom: 0;
 			width: 100%;
+			padding: .5rem 0 !important;
 			text-align: center;
 			font-size: .85rem;
 			color: #FEF3C9;
