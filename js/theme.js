@@ -41,11 +41,11 @@ function createStyles() {
 		:not(pre.prettyprint)::-webkit-scrollbar-thumb {
 			background-color: hsla(0, 0%, 25%, 1.0) !important;
 		}
-		html, body {
-			min-height: 100vh;
+		html {
+			position: relative;
 		}
 		html, body {
-			position: relative;
+			min-height: 100vh;
 		    background-color: hsla(0, 0%, 7.5%, 1.0);
 		    color: white !important;
 		    font-family: 'Inter', sans-serif;
@@ -125,8 +125,9 @@ function createStyles() {
 		    color: #E2B13C !important;
 		}
 		table {
-			width: 100%;
-			overflow-x: scroll;
+			display: block;
+			max-width: 100%;
+			overflow-x: auto;
 			font-size: .85rem;
 			margin: 0 0 .5rem 0;
 			padding: 0;
@@ -134,6 +135,9 @@ function createStyles() {
 		}
 		th, td {
 			padding: 5px;
+		}
+		td {
+			word-break: break-word !important;
 		}
 		tr:hover {
 			background-color: hsla(0, 0%, 12%, 1.0);
@@ -225,7 +229,6 @@ function createStyles() {
 			text-align: center;
 			font-size: .85rem;
 			color: #FEF3C9;
-			margin-top: 1.5rem;
 			background-color: hsla(0, 0%, 4%, 1.0);
 		}
 		@media (max-width: 400px) {
@@ -233,7 +236,7 @@ function createStyles() {
 				font-size: 12px !important;
 			}
 		}
-		@media (max-width: 500px) {
+		@media (max-width: 525px) {
 			div.clearfix {
 				flex-flow: column nowrap;
 			}
@@ -260,19 +263,25 @@ function createStyles() {
 			}
 		}
 		@media (min-width: 900px) {
-			body {
+			:root {
+				--content-width: calc(900px + 10vw);
+				--content-left: calc(calc(100% - var(--content-width) - 4rem) / 2);
+				--content-right: calc(100% - var(--content-left));
+			}
+			html {
+				overflow-x: hidden !important;
 				background-origin: content-box;
 				background-color: hsla(0, 0%, 7.5%, 1.0);
 				background: linear-gradient(90deg, 
 								hsla(0, 0%, 6%, 1.0) 0%, 
-								hsla(0, 0%, 5%, 1.0) calc(calc(100% - calc(900px + 10vw) - 4rem) / 2), 
-								hsla(0, 0%, 7.5%, 1.0) calc(calc(100% - calc(900px + 10vw) - 4rem) / 2), 
-								hsla(0, 0%, 7.5%, 1.0) calc(100% - calc(calc(100% - calc(900px + 10vw) - 4rem) / 2)), 
-								hsla(0, 0%, 5%, 1.0) calc(100% - calc(calc(100% - calc(900px + 10vw) - 4rem) / 2)), 
+								hsla(0, 0%, 5%, 1.0) var(--content-left), 
+								hsla(0, 0%, 7.5%, 1.0) var(--content-left), 
+								hsla(0, 0%, 7.5%, 1.0) var(--content-right), 
+								hsla(0, 0%, 5%, 1.0) var(--content-right), 
 								hsla(0, 0%, 6%, 1.0))!important;
 			}
-			div.clearfix {
-				max-width: calc(900px + 10vw);
+			body {
+				max-width: var(--content-width);
 				margin-left: auto !important;
 				margin-right: auto !important;
 			}
