@@ -37,6 +37,15 @@ function createStyles() {
 			transition: color .2s ease-in-out;
 			transition: background-color .2s ease-in-out;
 		}
+		:not(pre.prettyprint) {
+		    scrollbar-color: hsla(0, 0%, 2.5%, 1.0);
+		}
+		:not(pre.prettyprint)::-webkit-scrollbar {
+			background-color: hsla(0, 0%, 2.5%, 1.0) !important;
+		}
+		:not(pre.prettyprint)::-webkit-scrollbar-thumb {
+			background-color: hsla(0, 0%, 25%, 1.0) !important;
+		}
 		html, body {
 			min-height: 100vh;
 		}
