@@ -59,7 +59,17 @@ function createStyles() {
 		    font-family: 'Ubuntu Mono', monospace;
 		    padding: 1rem !important;
 		    font-size: 1.05rem;
-		    overflow-x: scroll;
+		    overflow-x: auto;
+		}
+		pre:not(pre.prettyprint) {
+		    scrollbar-color: hsla(0, 0%, 5%, 1.0);
+			background-color: hsla(0, 0%, 5%, 1.0);		
+		}
+		pre:not(pre.prettyprint)::-webkit-scrollbar {
+			background-color: hsla(0, 0%, 5%, 1.0) !important;
+		}
+		pre:not(pre.prettyprint)::-webkit-scrollbar-thumb {
+			background-color: hsla(0, 0%, 15%, 1.0) !important;
 		}
 		pre.prettyprint {
 			filter: invert();
@@ -69,6 +79,9 @@ function createStyles() {
 		    padding-bottom: .5rem;
 		    border-bottom: 1px solid hsla(0, 0%, 50%, 1.0);
 		}
+		h1 a {
+			text-decoration: none;
+		}
 		h3 {
 		    background-color: hsla(0, 0%, 12%, 1.0);
 		    padding: .5rem;
@@ -76,6 +89,12 @@ function createStyles() {
 		}
 		ul:not(li ul), ol {
 			margin: 1rem 0 !important;
+		}
+		ul ol {
+			margin-left: -2rem !important;
+		}
+		ol li, dd {
+			margin-bottom: .5rem;
 		}
 		blockquote {
 			padding: 1rem;
@@ -122,7 +141,7 @@ function createStyles() {
 			margin: .5rem auto;
 		}
 		hr {
-			border: 1px solid hsla(0, 0%, 34%, .67);
+			display: none;
 		}
 		div.clearfix {
 			display: flex;
@@ -132,6 +151,12 @@ function createStyles() {
 		div.column.menu {
 			padding: 0 1rem 0 0 !important;
 			width: fit-content;
+		}
+		div.column.menu b {
+			display: block;
+			margin-top: 10px;
+			font-size: .85rem;
+			padding: 5px 2.5px;
 		}
 		div.column.menu ul {
 			margin: 0 !important;
@@ -174,7 +199,7 @@ function createStyles() {
 			background-color: hsla(0, 0%, 15%, 1.0);
 		}
 		div.column.content {
-			margin-left: 1rem;
+			padding-bottom: 1rem !important;
 		}
 		div.column.content::after {
 			content: none !important; 
